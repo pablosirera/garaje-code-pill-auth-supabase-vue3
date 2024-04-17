@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomePage from '../pages/HomePage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,17 +7,17 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomePage
     },
     {
       path: '/auth-link',
       name: 'AuthLink',
-      component: () => import('../views/AuthLinkView.vue')
+      component: () => import('../pages/AuthLinkPage.vue')
     },
     {
       path: '/auth-email',
       name: 'AuthEmail',
-      component: () => import('../views/AuthEmail/AuthEmailView.vue')
+      component: () => import('../pages/AuthEmailPage.vue')
     }
   ]
 })
