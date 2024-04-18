@@ -1,10 +1,21 @@
 <script setup>
+import { useAuth } from '@/composables/useAuth'
 import { ref } from 'vue'
 
 const loading = ref(false)
 const email = ref('')
+const { loginWithMagicLink } = useAuth()
 
-const handleLogin = () => {}
+const handleLogin = async () => {
+  try {
+    loading.value = true
+    await loginWithMagicLink({ email: email.value })
+  } catch (error) {
+    alert(error.message)
+  } finally {
+    loading.value = false
+  }
+}
 </script>
 
 <template>

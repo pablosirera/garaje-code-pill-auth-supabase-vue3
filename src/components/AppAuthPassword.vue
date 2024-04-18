@@ -1,9 +1,37 @@
 <script setup>
+import { useAuth } from '@/composables/useAuth'
 import { ref } from 'vue'
 
 const loading = ref(false)
 const email = ref('')
 const password = ref('')
+const { signUpWithPassw, loginWithPassw } = useAuth()
+
+const signup = async () => {
+  try {
+    loading.value = true
+    await signUpWithPassw({ email: email.value, password: password.value })
+  } catch (error) {
+    alert(error.message)
+  } finally {
+    loading.value = false
+  }
+}
+
+async function login() {
+  try {
+    loading.value = true
+    await loginWithPassw({
+      email: email.value,
+      password: password.value
+    })
+    alert('has iniciado sesión correctamente')
+  } catch (error) {
+    alert(error.message)
+  } finally {
+    loading.value = false
+  }
+}
 </script>
 
 <template>

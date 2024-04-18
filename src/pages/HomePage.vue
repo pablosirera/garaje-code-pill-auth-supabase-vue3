@@ -1,5 +1,13 @@
 <script setup>
+import { onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
+import { useAuth } from '@/composables/useAuth'
+
+const { getSession } = useAuth()
+
+onMounted(() => {
+  getSession()
+})
 </script>
 
 <template>
